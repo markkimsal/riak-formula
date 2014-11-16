@@ -1,0 +1,2 @@
+riak:
+  install_stanchion: true

@@ -1,3 +1,4 @@
+{% set riak = salt['pillar.get']('riak', {}) %}
 include:
   - riak
 
@@ -13,6 +14,8 @@ riak-cs-control:
   require: 
     - pkg: riak-cs
 
+{%if riak.get('install_stanchion') %}
 stanchion: 
   pkg.installed:
     - order: last
+{% endif %}
